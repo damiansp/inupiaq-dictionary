@@ -1,0 +1,218 @@
+timestamp: 2015-12-30T12:47:24.859708
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2015-12-30T12:47:24.863032
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-12-30T12:47:24.864395
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2015-12-30T12:47:24.865786
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2015-12-30T12:47:24.867125
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-12-30T12:47:24.868985
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-01-18T16:48:20.679737
+CREATE TABLE store(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    phone CHAR(512),
+    created_on TIMESTAMP,
+    star_rating DOUBLE,
+    description TEXT
+);
+success!
+timestamp: 2016-01-18T16:48:20.687284
+CREATE TABLE ingredient(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-01-20T18:12:31.253172
+ALTER TABLE ingredient ADD favorite_store INTEGER REFERENCES store (id) ON DELETE SET NULL  ;
+success!
+timestamp: 2016-01-20T18:12:31.259459
+CREATE TABLE inventory(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    store INTEGER REFERENCES store (id) ON DELETE CASCADE  ,
+    ingredient INTEGER REFERENCES ingredient (id) ON DELETE CASCADE  ,
+    is_favorite CHAR(1)
+);
+success!
+timestamp: 2016-01-22T14:29:53.687114
+ALTER TABLE store ADD stret_no CHAR(512);
+success!
+timestamp: 2016-01-22T14:30:12.096022
+ALTER TABLE store ADD street_no CHAR(512);
+success!
+success!
+timestamp: 2016-01-22T14:31:35.927838
+CREATE TABLE recipe(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    time_required CHAR(512),
+    description TEXT,
+    recipe_cost DOUBLE
+);
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2016-01-23T23:42:01.181018
+CREATE TABLE gaighlig(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    english CHAR(512),
+    sense CHAR(512),
+    gaelic CHAR(512),
+    pos CHAR(512),
+    pos_extra CHAR(512),
+    post_asp CHAR(1),
+    gender CHAR(512),
+    nom_sg_def CHAR(512),
+    gen_sg CHAR(512),
+    dat_sg CHAR(512),
+    nom_pl CHAR(512),
+    gen_pl CHAR(512),
+    second_sg_imperative CHAR(512),
+    v_noun CHAR(512),
+    comp CHAR(512),
+    n_case CHAR(512),
+    lit CHAR(512),
+    expressions CHAR(512),
+    created_on CHAR(512),
+    created_by CHAR(512)
+);
+success!
